@@ -57,13 +57,27 @@ one-time animations or loading content when it becomes visible:
 
 ### Observer Controls
 
-The `IsInViewport` class provides methods to control the underlying intersection observer. See
-[`useIntersectionObserver`](/docs/utilities/use-intersection-observer#usage) for more information.
+The `IsInViewport` class exposes the underlying intersection observer for direct control:
+
+```svelte
+<script lang="ts">
+	import { IsInViewport } from "runed";
+
+	let targetNode = $state<HTMLElement>()!;
+	const inViewport = new IsInViewport(() => targetNode);
+
+	// Access observer directly
+	inViewport.observer.pause();
+	inViewport.observer.resume();
+	inViewport.observer.stop();
+	console.log(inViewport.observer.isActive);
+</script>
+```
 
 ## Type Definition
 
 ```ts
-import { type UseIntersectionObserverOptions } from "runed";
+import { type UseIntersectionObserverOptions, type UseIntersectionObserverReturn } from "runed";
 export type IsInViewportOptions = UseIntersectionObserverOptions;
 
 export declare class IsInViewport {
@@ -72,17 +86,8 @@ export declare class IsInViewport {
 	/** Current viewport intersection state */
 	get current(): boolean;
 
-	/** Stop observing permanently */
-	stop(): void;
-
-	/** Pause observation temporarily */
-	pause(): void;
-
-	/** Resume observation after pausing */
-	resume(): void;
-
-	/** Whether the observer is currently active */
-	get isActive(): boolean;
+	/** The underlying intersection observer */
+	get observer(): UseIntersectionObserverReturn;
 }
 ```
 
