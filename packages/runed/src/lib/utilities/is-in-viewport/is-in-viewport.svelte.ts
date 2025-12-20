@@ -41,23 +41,23 @@ export class IsInViewport {
 	/**
 	 * Stop observing the element.
 	 */
-	stop() {
+	stop = () => {
 		this.#observer.stop();
-	}
+	};
 
 	/**
 	 * Pause the intersection observer.
 	 */
-	pause() {
+	pause = () => {
 		this.#observer.pause();
-	}
+	};
 
 	/**
 	 * Resume the intersection observer.
 	 */
-	resume() {
+	resume = () => {
 		this.#observer.resume();
-	}
+	};
 
 	/**
 	 * Whether the intersection observer is currently active.
