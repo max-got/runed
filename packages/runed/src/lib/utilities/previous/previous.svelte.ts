@@ -6,14 +6,20 @@ import type { Getter } from "$lib/internal/types.js";
  * @see {@link https://runed.dev/docs/utilities/previous}
  */
 export class Previous<T> {
-	#previous: T | undefined = $state(undefined);
-	#curr?: T;
+	#previousCallback: () => T | undefined = () => undefined;
+	#previous: T | undefined = $derived.by(() => this.#previousCallback());
 
-	constructor(getter: Getter<T>) {
-		$effect(() => {
-			this.#previous = this.#curr;
-			this.#curr = getter();
-		});
+	constructor(getter: Getter<T>, initialValue?: T) {
+		let actualPrevious: T | undefined = undefined;
+		if (initialValue !== undefined) actualPrevious = initialValue;
+
+		this.#previousCallback = () => {
+			try {
+				return actualPrevious;
+			} finally {
+				actualPrevious = getter();
+			}
+		};
 	}
 
 	get current(): T | undefined {

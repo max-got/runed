@@ -1,5 +1,252 @@
 # runed
 
+## 0.37.0
+
+### Minor Changes
+
+- feat(PersistedState): add `connect` and `disconnect` methods to control synchronization to storage
+  ([#359](https://github.com/svecosystem/runed/pull/359))
+
+- feat(PersistedState): allow `null` values ([#359](https://github.com/svecosystem/runed/pull/359))
+
+## 0.36.0
+
+### Minor Changes
+
+- feat(IsIdle): add `trackLastActive` option to enable users to disable tracking the `lastActive`
+  time ([#363](https://github.com/svecosystem/runed/pull/363)) for performance optimizations
+
+### Patch Changes
+
+- fix(useSearchParams): don't treat comma separated strings as arrays unless the field type is array
+  ([#383](https://github.com/svecosystem/runed/pull/383))
+
+- feat(useSearchParams): Date support ([#368](https://github.com/svecosystem/runed/pull/368))
+
+- feat(useSearchParams): Zod codec support ([#368](https://github.com/svecosystem/runed/pull/368))
+
+- fix(useSearchParams): back/forward reactivity
+  ([#383](https://github.com/svecosystem/runed/pull/383))
+
+## 0.35.1
+
+### Patch Changes
+
+- fix(useSearchParams): unsafe state mutation
+  ([#361](https://github.com/svecosystem/runed/pull/361))
+
+## 0.35.0
+
+### Minor Changes
+
+- feat: add `noScroll` option to `useSearchParams`
+  ([#353](https://github.com/svecosystem/runed/pull/353))
+
+- BREAKING: remove Interval, consolidate features with useInterval
+  ([#350](https://github.com/svecosystem/runed/pull/350))
+
+### Patch Changes
+
+- fix: make useInterval's delay prop reactive
+  ([#350](https://github.com/svecosystem/runed/pull/350))
+
+- fix(useSearchParams): correctly handle number types
+  ([#354](https://github.com/svecosystem/runed/pull/354))
+
+- fix(PersistedState): move storage type and sync tab check into subscriber callback
+  ([#296](https://github.com/svecosystem/runed/pull/296))
+
+- fix(useSearchParams): resolve input lag/delay when binding the value to a param
+  ([#357](https://github.com/svecosystem/runed/pull/357))
+
+## 0.34.0
+
+### Minor Changes
+
+- New Utility: `IsDocumentVisibile` ([#328](https://github.com/svecosystem/runed/pull/328))
+
+## 0.33.0
+
+### Minor Changes
+
+- breaking(validateSearchParams): return an object with `searchParams` and `data`, `searchParams`
+  being the ([#329](https://github.com/svecosystem/runed/pull/329)) validated `URLSearchParams` and
+  `data` being the validated object
+
+- New Utility: `onCleanup` ([#318](https://github.com/svecosystem/runed/pull/318))
+
+### Patch Changes
+
+- fix(validateSearchParams): fine grained access
+  ([#329](https://github.com/svecosystem/runed/pull/329))
+
+## 0.32.0
+
+### Minor Changes
+
+- New Utility: `useSearchParams` ([#266](https://github.com/svecosystem/runed/pull/266))
+
+- feat(StateHistory): add `clear` method to reset the stack
+  ([#293](https://github.com/svecosystem/runed/pull/293))
+
+- New Utility: `boolAttr` ([#251](https://github.com/svecosystem/runed/pull/251))
+
+### Patch Changes
+
+- fix(IsIdle): use reactive events ([#317](https://github.com/svecosystem/runed/pull/317))
+
+- fix: use a `$derived` in `Previous` ([#314](https://github.com/svecosystem/runed/pull/314))
+
+- fix: type of `event.currentTarget` for `useEventListener`
+  ([#311](https://github.com/svecosystem/runed/pull/311))
+
+## 0.31.1
+
+### Patch Changes
+
+- fix(persisted-state): do not make complex objects reactive
+  ([#270](https://github.com/svecosystem/runed/pull/270))
+
+## 0.31.0
+
+### Minor Changes
+
+- feat: add interval utilities
+  ([`c7de088`](https://github.com/svecosystem/runed/commit/c7de088300fcbf7df1fd57a4f1245debd2bc06bb))
+
+## 0.30.0
+
+### Minor Changes
+
+- New Utilities: `useThrottle` and `Throttled`
+  ([#115](https://github.com/svecosystem/runed/pull/115))
+
+- Update Svelte to `5.0.0-next.200` ([#115](https://github.com/svecosystem/runed/pull/115))
+
+## 0.29.2
+
+### Patch Changes
+
+- fix: remove `#version` from persisted & don't recreate proxies
+  ([#279](https://github.com/svecosystem/runed/pull/279))
+
+## 0.29.1
+
+### Patch Changes
+
+- feat(ScrollState): Add `progress.(x|y)` api
+  ([#284](https://github.com/svecosystem/runed/pull/284))
+
+- fix: add `defaults` export to package.json ([#285](https://github.com/svecosystem/runed/pull/285))
+
+## 0.29.0
+
+### Minor Changes
+
+- feat(Debounced): Expose pending state from useDebounce
+  ([#272](https://github.com/svecosystem/runed/pull/272))
+
+## 0.28.0
+
+### Minor Changes
+
+- breaking: remove `initialSize` and calculate size before first resize
+  ([#262](https://github.com/svecosystem/runed/pull/262))
+
+### Patch Changes
+
+- fix: use `createSubscriber` for `ElementSize` util
+  ([#254](https://github.com/svecosystem/runed/pull/254))
+
+## 0.27.0
+
+### Minor Changes
+
+- New utility: `TextareaAutosize` ([#233](https://github.com/svecosystem/runed/pull/233))
+
+- New utility: `extract` ([#233](https://github.com/svecosystem/runed/pull/233))
+
+- New utility: `ScrollState` ([#233](https://github.com/svecosystem/runed/pull/233))
+
+- feat: export `Getter` and `MaybeGetter` types
+  ([#233](https://github.com/svecosystem/runed/pull/233))
+
+### Patch Changes
+
+- change: `extract` types ([#233](https://github.com/svecosystem/runed/pull/233))
+
+## 0.26.0
+
+### Minor Changes
+
+- feat(PressedKeys): add the ability to register a callback to execute when a specified key
+  combination is pressed. ([#239](https://github.com/svecosystem/runed/pull/239))
+
+### Patch Changes
+
+- chore: add license field to package.json ([#238](https://github.com/svecosystem/runed/pull/238))
+
+- fix(PersistedState): prevent console errors if `typeof window === undefined`
+  ([#244](https://github.com/svecosystem/runed/pull/244))
+
+- fix(resource): remove redundant equality comparison
+  ([#248](https://github.com/svecosystem/runed/pull/248))
+
+- fix(PressedKeys): keys are not cleared after key combination is pressed
+  ([#239](https://github.com/svecosystem/runed/pull/239))
+
+## 0.25.0
+
+### Minor Changes
+
+- previous: allow passing initial value
+  ([`3bbcb9e`](https://github.com/svecosystem/runed/commit/3bbcb9e0185bb40fdb8d38b31876f0e297bee544))
+
+### Patch Changes
+
+- fix: Fix issues with `PersistedState` in runes mode.
+  ([#236](https://github.com/svecosystem/runed/pull/236))
+
+## 0.24.1
+
+### Patch Changes
+
+- fix(persisted-state): write state to storage even if only a nested property is changed. fixes #224
+  ([#225](https://github.com/svecosystem/runed/pull/225))
+
+## 0.24.0
+
+### Minor Changes
+
+- feat: add `resource` that watches dependencies and runs async data fetching
+  ([#218](https://github.com/svecosystem/runed/pull/218))
+
+## 0.23.4
+
+### Patch Changes
+
+- fix: package.json default exports ([#220](https://github.com/svecosystem/runed/pull/220))
+
+## 0.23.3
+
+### Patch Changes
+
+- fix default export
+  ([`09f37b3`](https://github.com/svecosystem/runed/commit/09f37b33927eb9a2e9c3a1d351c64d5b16b1fdbf))
+
+## 0.23.2
+
+### Patch Changes
+
+- patch: add defined checks in addition to browser for `window`
+  ([#212](https://github.com/svecosystem/runed/pull/212))
+
+## 0.23.1
+
+### Patch Changes
+
+- fix: remove `PURE` from global exports ([#200](https://github.com/svecosystem/runed/pull/200))
+
 ## 0.23.0
 
 ### Minor Changes

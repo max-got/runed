@@ -1,5 +1,6 @@
 name: "🐛 Bug report"
-description: Report an issue with withrunes
+description: Report an issue with runed
+labels: ["triage"]
 body:
   - type: markdown
     attributes:
@@ -51,6 +52,6 @@ body:
       options:
         - annoyance
         - blocking an upgrade
-        - blocking all usage of WithRunes
+        - blocking all usage of runed
     validations:
       required: true

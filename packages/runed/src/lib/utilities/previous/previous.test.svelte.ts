@@ -1,24 +1,44 @@
-import { describe } from "node:test";
-import { expect, test } from "vitest";
+import { testWithEffect } from "$lib/test/util.svelte.js";
+import { flushSync } from "svelte";
+import { expect, describe } from "vitest";
+import { Previous } from "./previous.svelte.js";
 
-// TODO: Find out why tests aren't working, even though the demo works
 describe("usePrevious", () => {
-	test("dummy test", () => {
-		expect(true).toBe(true);
+	testWithEffect("Should return undefined initially", () => {
+		const previous = new Previous(() => 0);
+		expect(previous.current).toBe(undefined);
 	});
-	// testWithEffect('Should return undefined initially', () => {
-	//   const previous = usePrevious(() => 0);
-	//   expect(previous.value).toBe(undefined)
-	// })
 
-	// testWithEffect('Should return previous value', async () => {
-	//   const count = box(0);
-	//   const previous = usePrevious(count);
-	//   expect(previous.value).toBe(undefined)
-	//   count.value = 1
-	//   await new Promise(resolve => setTimeout(resolve, 100))
-	//   expect(previous.value).toBe(0)
-	//   count.value = 2
-	//   expect(previous.value).toBe(1)
-	// })
+	testWithEffect("Should return initialValue initially, when passed", () => {
+		const previous = new Previous(() => 1, 0);
+		expect(previous.current).toBe(0);
+	});
+
+	testWithEffect("Should return previous value", () => {
+		let count = $state(0);
+		const previous = new Previous(() => count);
+
+		const logs: (number | undefined)[] = [];
+
+		// test that the previous.current actually triggers reactivity
+		$effect.pre(() => {
+			logs.push(previous.current);
+		});
+
+		expect(previous.current).toBe(undefined);
+		flushSync();
+		expect(logs).toEqual([undefined]);
+		count = 1;
+		// check that the value is updated synchronously
+		expect(previous.current).toBe(0);
+		// then flushsync to check that the effect has run
+		flushSync();
+		expect(logs).toEqual([undefined, 0]);
+		count = 2;
+		// check that the value is updated synchronously
+		expect(previous.current).toBe(1);
+		// then flushsync to check that the effect has run
+		flushSync();
+		expect(logs).toEqual([undefined, 0, 1]);
+	});
 });
